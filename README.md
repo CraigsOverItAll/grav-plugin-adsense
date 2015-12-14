@@ -1,6 +1,4 @@
-# [![Grav adsense Plugin](assets/logo.svg)][project]
-
-[![Release](https://img.shields.io/github/release/muuvmuuv/grav-plugin-adsense.svg)][project] [![Issues](https://img.shields.io/github/issues/muuvmuuv/grav-plugin-adsense.svg)][issues]
+# [![Grav adsense Plugin](assets/logo.png)][project]
 
 ## This plugin introduces adsense to add ads in you page modulars.
 
