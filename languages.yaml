@@ -1,0 +1,37 @@
+# German
+de:
+  PLUGINS:
+    ADSENSE:
+      GLOBAL_CONFIG: "Globale Einstellungen"
+      DEFAULT_CONFIG: "Standardeinstellungen für AdSense"
+      SANDBOX_STATUS: "Sandbox"
+      SANDBOX_HELP: "Sandbox shows you demo ads for testing purpose"
+      PLUGIN_STATUS: "Plugin Status"
+
+      OPTIONS_LABEL: "Optionen"
+      OPTIONS:
+        TYPE: "Typ der Anzeige"
+        BANNER: "Banner"
+        FIXED: "Fixiert"
+        DIRECTION: "Ausrichtung der Anzeige"
+        LEFT: "Links"
+        RIGHT: "Rechts"
+        TOP: "Oben"
+        BOTTOM: "Unten"
+        PRIORITY: "Priorität"
+        PRIORITY_HELP: "Priorität von AdSense, wenn es zur Grav Pipeline hinzugefügt wird: größere Werte werden zuerst geladen"
+        PIPELINE: "Kombinieren"
+        LOAD: "Ladeverhalten"
+        LOAD_HELP: 'Asynchrones (async), verzögertes (defer) oder syncrones (none) laden von AdSense'
+        NONE: "None"
+        ASYNC: "Async"
+        DEFER: "Defer"
+        RESOURCE: "AdSense API JavaScript"
+
+      DATA_LABEL: "Keys"
+      DATA_HELP: "Mehr über die zu angebenden Daten hier finden Sie auf google.com/adsense/"
+      DATA:
+        CLIENT: "Klient-ID von AdSense"
+        SLOT: "Slot-ID von AdSense"
+
+# English
