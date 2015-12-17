@@ -35,7 +35,7 @@ The `adsense` plugin comes with some sensible default configuration, that are pr
 # Global plugin configurations
 
 enabled: true             # Set to false to disable this plugin completely
-sandbox: true             # Enables a demo mode for local purpose
+sandbox: false            # Enables a demo mode for local purpose
 
 # Default configurations for AdSense
 
@@ -45,7 +45,7 @@ adsense:
     direction: "top"      # Assets direction (either "left", "right", "top", "bottom")
     priority: -999        # Priority to add CSS or JS to Grav pipeline, bigger comes first
     pipeline: false       # Pipeline assets or not
-    load: "async"         # Load asset either asynchronously "async" or deferred "defer"
+    load: ""              # Load asset either asynchronously "async", deferred "defer" or normal ""
     resource: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" # AdSense script url
 
   data:
@@ -54,6 +54,7 @@ adsense:
 ```
 
 If you need to change any value, then the best process is to copy the [adsense.yaml](adsense.yaml) file into your `users/config/plugins/` folder (create it if it doesn't exist), and then modify there. This will override the default settings.
+Is the admin plugin installed on you GRAV site, you can easily configurate this options in the plugin section. Just click on the plugin name and scroll a bit down.
 
 For displaying the ad in a modular, you need to put some line into the yaml header, e.g.
 

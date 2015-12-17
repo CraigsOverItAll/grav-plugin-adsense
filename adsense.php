@@ -134,8 +134,8 @@ class AdSensePlugin extends Plugin {
     $resource   = $options['resource'];
 
     /** adding the style/script to the assets */
-    $sandy ? : $this->grav['assets']->addJs($resource, $priority, $pipeline, $load); // check sandy
-    $sandy ? : $this->grav['assets']->addJs('plugin://adsense/assets/js/adsense.js', $priority, $pipeline, $load); // check sandy
+    $sandy ? : $this->grav['assets']->addJs($resource, $priority, $pipeline, $load);
+    $sandy ? : $this->grav['assets']->addJs('plugin://adsense/assets/js/adsense.js', $priority, $pipeline, $load);
     $this->grav['assets']->addCss('plugin://adsense/assets/css/adsense.css', $priority, $pipeline);
   }
 

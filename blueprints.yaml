@@ -6,7 +6,7 @@ author:
   name: muuvmuuv
   email: marvin.heilemann@cookie-soft.de
 homepage: https://github.com/muuvmuuv/grav-plugin-adsense
-keywords: [adsense, twig, grav, extension, plugin, google]
+keywords: [adsense, grav, extension, plugin, google]
 docs: https://github.com/muuvmuuv/grav-plugin-adsense/blob/master/README.md
 bugs: https://github.com/muuvmuuv/grav-plugin-adsense/issues
 license: MIT
@@ -16,13 +16,13 @@ form:
   fields:
     global:
       type: section
-      title: PLUGINS.ADSENSE.GLOBAL_CONFIG
+      title: PLUGIN_ADSENSE.GLOBAL_CONFIG
       underline: 1
 
       fields:
         enabled:
           type: toggle
-          label: PLUGINS.ADSENSE.PLUGIN_STATUS
+          label: PLUGIN_ADSENSE.PLUGIN_STATUS
           highlight: 1
           default: 0
           options:
@@ -33,7 +33,7 @@ form:
 
         sandbox:
           type: toggle
-          label: PLUGINS.ADSENSE.SANDBOX_STATUS
+          label: PLUGIN_ADSENSE.SANDBOX_STATUS
           highlight: 0
           default: 1
           options:
@@ -44,7 +44,7 @@ form:
 
     default:
       type: section
-      title: PLUGINS.ADSENSE.DEFAULT_CONFIG
+      title: PLUGIN_ADSENSE.DEFAULT_CONFIG
       underline: 1
 
       fields:
@@ -52,38 +52,38 @@ form:
           type: fieldset
           collapsible: false
           icon: gear
-          title: PLUGINS.ADSENSE.OPTIONS_LABEL
+          title: PLUGIN_ADSENSE.OPTIONS_LABEL
 
           fields:
             adsense.options.type:
               type: select
               size: small
-              label: PLUGINS.ADSENSE.OPTIONS.TYPE
+              label: PLUGIN_ADSENSE.OPTIONS.TYPE
               default: css
               options:
-                banner: PLUGINS.ADSENSE.OPTIONS.BANNER
-                fixed: PLUGINS.ADSENSE.OPTIONS.FIXED
+                banner: PLUGIN_ADSENSE.OPTIONS.BANNER
+                fixed: PLUGIN_ADSENSE.OPTIONS.FIXED
               validate:
                 type: string
 
             adsense.options.direction:
               type: select
               size: small
-              label: PLUGINS.ADSENSE.OPTIONS.DIRECTION
+              label: PLUGIN_ADSENSE.OPTIONS.DIRECTION
               default: css
               options:
-                left: PLUGINS.ADSENSE.OPTIONS.LEFT
-                right: PLUGINS.ADSENSE.OPTIONS.RIGHT
-                top: PLUGINS.ADSENSE.OPTIONS.TOP
-                bottom: PLUGINS.ADSENSE.OPTIONS.BOTTOM
+                left: PLUGIN_ADSENSE.OPTIONS.LEFT
+                right: PLUGIN_ADSENSE.OPTIONS.RIGHT
+                top: PLUGIN_ADSENSE.OPTIONS.TOP
+                bottom: PLUGIN_ADSENSE.OPTIONS.BOTTOM
               validate:
                 type: string
 
             adsense.options.priority:
               type: text
               size: x-small
-              label: PLUGINS.ADSENSE.OPTIONS.PRIORITY
-              help: PLUGINS.ADSENSE.OPTIONS.PRIORITY_HELP
+              label: PLUGIN_ADSENSE.OPTIONS.PRIORITY
+              help: PLUGIN_ADSENSE.OPTIONS.PRIORITY_HELP
               default: 10
               validate:
                 type: int
@@ -92,7 +92,7 @@ form:
 
             adsense.options.pipeline:
               type: toggle
-              label: PLUGINS.ADSENSE.OPTIONS.PIPELINE
+              label: PLUGIN_ADSENSE.OPTIONS.PIPELINE
               highlight: 0
               default: 0
               options:
@@ -104,25 +104,25 @@ form:
             adsense.options.load:
               type: select
               size: large
-              label: PLUGINS.ADSENSE.OPTIONS.LOAD
-              help: PLUGINS.ADSENSE.OPTIONS.LOAD_HELP
+              label: PLUGIN_ADSENSE.OPTIONS.LOAD
+              help: PLUGIN_ADSENSE.OPTIONS.LOAD_HELP
               default: async
               options:
-                " ": PLUGINS.ADSENSE.OPTIONS.NONE
-                async: PLUGINS.ADSENSE.OPTIONS.ASYNC
-                defer: PLUGINS.ADSENSE.OPTIONS.DEFER
+                " ": PLUGIN_ADSENSE.OPTIONS.NONE
+                async: PLUGIN_ADSENSE.OPTIONS.ASYNC
+                defer: PLUGIN_ADSENSE.OPTIONS.DEFER
 
             adsense.options.resource:
               type: text
               size: large
-              label: PLUGINS.ADSENSE.OPTIONS.RESOURCE
+              label: PLUGIN_ADSENSE.OPTIONS.RESOURCE
               validate:
                 type: string
 
         data:
           type: fieldset
-          title: PLUGINS.ADSENSE.DATA_LABEL
-          help: PLUGINS.ADSENSE.DATA_HELP
+          title: PLUGIN_ADSENSE.DATA_LABEL
+          help: PLUGIN_ADSENSE.DATA_HELP
           collapsed: true
           icon: key
 
@@ -130,13 +130,13 @@ form:
             adsense.data.client:
               type: text
               size: large
-              label: PLUGINS.ADSENSE.DATA.CLIENT
+              label: PLUGIN_ADSENSE.DATA.CLIENT
               validate:
                 type: string
 
             adsense.data.slot:
               type: text
               size: large
-              label: PLUGINS.ADSENSE.DATA.SLOT
+              label: PLUGIN_ADSENSE.DATA.SLOT
               validate:
                 type: int

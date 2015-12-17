@@ -11,7 +11,7 @@ adsense:
     direction: "top"      # Assets direction (either "left", "right", "top", "bottom")
     priority: -999        # Priority to add CSS or JS to Grav pipeline, bigger comes first
     pipeline: false       # Pipeline assets or not
-    load: "defer"         # Load asset either asynchronously "async" or deferred "defer"
+    load: ""              # Load asset either asynchronously "async", deferred "defer" or normal ""
     resource: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" # AdSense script url
 
   data:
