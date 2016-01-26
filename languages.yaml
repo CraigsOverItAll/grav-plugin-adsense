@@ -34,3 +34,36 @@ de:
       SLOT: "Slot-ID von AdSense"
 
 # English
+en:
+  PLUGIN_ADSENSE:
+    GLOBAL_CONFIG: "Global Configuration"
+    DEFAULT_CONFIG: "Default Configuration for AdSense"
+    SANDBOX_STATUS: "Sandbox"
+    SANDBOX_HELP: "Sandbox shows demo ads for testing purposes"
+    PLUGIN_STATUS: "Plugin Status"
+
+    OPTIONS_LABEL: "Options"
+    OPTIONS:
+      TYPE: "Display Type"
+      BANNER: "Banner"
+      FIXED: "Fixed"
+      DIRECTION: "Orientation"
+      LEFT: "Left"
+      RIGHT: "Right"
+      TOP: "Top"
+      BOTTOM: "Bottom"
+      PRIORITY: "Priority"
+      PRIORITY_HELP: "Priority of AdSense, if it is added to the pipeline Grav: larger values are loaded first"
+      PIPELINE: "Pipeline"
+      LOAD: "Load"
+      LOAD_HELP: "Load AdSense aynchronously (async), delayed (defer) or synchronous (none) method"
+      NONE: "None"
+      ASYNC: "Async"
+      DEFER: "Defer"
+      RESOURCE: "AdSense API JavaScript"
+
+    DATA_LABEL: "Keys"
+    DATA_HELP: "Further information can be found on google.com/adsense/"
+    DATA:
+      CLIENT: "AdSense Client-ID"
+      SLOT: "AdSense Slot-ID"
