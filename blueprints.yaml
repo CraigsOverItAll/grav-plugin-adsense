@@ -131,6 +131,7 @@ form:
               type: text
               size: large
               label: PLUGIN_ADSENSE.DATA.CLIENT
+              placeholder: ca-pub-1147018993230160
               validate:
                 type: string
 
@@ -138,5 +139,6 @@ form:
               type: text
               size: large
               label: PLUGIN_ADSENSE.DATA.SLOT
+              placeholder: 1160605533
               validate:
                 type: int
