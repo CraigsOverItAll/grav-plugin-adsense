@@ -63,7 +63,7 @@ adsense:
   active: true
   type: "banner"
   direction: "left"
-  slot: '1160605533'
+  slot: 52141213123
 ```
 
 the `active: true` enables the *AdSense Plugin* just for this module, type and direction are not necessary here. Optional you can add a unique slot per ad.

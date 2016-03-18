@@ -89,7 +89,7 @@ class AdSensePlugin extends Plugin {
     $direction  = $options['direction'];
     $resource   = $options['resource'];
 
-    /** check them */
+    /** check options */
     $this->checkType($type);
     $this->checkDirection($direction);
 

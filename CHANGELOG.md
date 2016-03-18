@@ -3,7 +3,7 @@
 
 1. [](#new)
   * Added optional modular slot id
-  * Fixed a bug with sandbox mode
+  * Fixed a bug with ::before selector in sandbox mode
 
 # v1.0.1
 ## 05/12/2015
