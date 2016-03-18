@@ -54,7 +54,7 @@ adsense:
 ```
 
 If you need to change any value, then the best process is to copy the [adsense.yaml](adsense.yaml) file into your `users/config/plugins/` folder (create it if it doesn't exist), and then modify there. This will override the default settings.
-Is the admin plugin installed on you GRAV site, you can easily configurate this options in the plugin section. Just click on the plugin name and scroll a bit down.
+Is the admin plugin installed on you GRAV site, you can easily configure this options in the plugin section. Just click on the plugin name and scroll a bit down.
 
 For displaying the ad in a modular, you need to put some line into the yaml header, e.g.
 
@@ -63,9 +63,10 @@ adsense:
   active: true
   type: "banner"
   direction: "left"
+  slot: '1160605533'
 ```
 
-the `active: true` enables the *AdSense Plugin* just for this module, type and direction are optional here.
+the `active: true` enables the *AdSense Plugin* just for this module, type and direction are not necessary here. Optional you can add a unique slot per ad.
 
 
 ## Contributing
@@ -76,10 +77,11 @@ After that please note:
 
 * If you find a bug, would like to make a feature request or suggest an improvement, [please open a new issue][issues]. If you have any interesting ideas for additions to the syntax please do suggest them as well!
 * Feature requests are more likely to get attention if you include a clearly described use case.
+* Add images/links/etc so I can help you faster
 
 ### Support and donations
 
-If you like my project and are a gamer too visit my clan community page at [Team-GeForce](http://team-geforce.eu/).
+If you like my project and are a gamer too visit my clan community page at [inFluxe-Gaming](https://influxe-gaming.de/).
 
 Thanks!
 
