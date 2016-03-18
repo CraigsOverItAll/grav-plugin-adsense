@@ -1,6 +1,6 @@
 <?php
 /**
- * AdSense v1.0.1
+ * AdSense v1.0.2
  *
  * This plugin enables to use AdSense inside a document
  * to be rendered by Grav.
@@ -9,7 +9,7 @@
  * http://cookie-soft.de/license
  *
  * @package     AdSense
- * @version     1.0.1
+ * @version     1.0.2
  * @link        <https://github.com/muuvmuuv/grav-plugin-adsense>
  * @author      Marvin Heilemann <marvin.heilemann@cookie-soft.de>
  * @copyright   2015, Marvin Heilemann
