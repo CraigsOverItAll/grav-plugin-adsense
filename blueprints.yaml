@@ -4,7 +4,7 @@ description: "This plugin enables to use AdSense inside a document to be rendere
 icon: adn
 author:
   name: muuvmuuv
-  email: marvin.heilemann@cookie-soft.de
+  email: marvin.heilemann@googlemail.com
 homepage: https://github.com/muuvmuuv/grav-plugin-adsense
 keywords: [adsense, grav, extension, plugin, google]
 docs: https://github.com/muuvmuuv/grav-plugin-adsense/blob/master/README.md

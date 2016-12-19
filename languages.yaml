@@ -32,7 +32,40 @@ de:
     DATA:
       CLIENT: "Klient-ID von AdSense"
       SLOT: "Slot-ID von AdSense"
+# Russian
+ru:
+  PLUGIN_ADSENSE:
+    GLOBAL_CONFIG: "Глобальные настройки"
+    DEFAULT_CONFIG: "Настройки AdSense по умолчанию"
+    SANDBOX_STATUS: "Песочница"
+    SANDBOX_HELP: "Песочница показывает Вам демо рекламы для тестирования"
+    PLUGIN_STATUS: "Состояние плагина"
 
+    OPTIONS_LABEL: "Варианты"
+    OPTIONS:
+      TYPE: "Тип дисплея"
+      BANNER: "Баннер"
+      FIXED: "Фиксированный"
+      DIRECTION: "Ориентация дисплея"
+      LEFT: "Ссылки"
+      RIGHT: "Справа"
+      TOP: "Выше"
+      BOTTOM: "Ниже"
+      PRIORITY: "Приоритет"
+      PRIORITY_HELP: "Приоритет AdSense, если он будет добавлен в Grav канал: большие значения загружаются сначала"
+      PIPELINE: "Комбинировать"
+      LOAD: "Поведение при загрузке"
+      LOAD_HELP: 'Асинхронный (async), отложить (defer) или синхронная (none) загрузка AdSense'
+      NONE: "None"
+      ASYNC: "Async"
+      DEFER: "Defer"
+      RESOURCE: "AdSense API JavaScript"
+
+    DATA_LABEL: "Ключи"
+    DATA_HELP: "Подставляемые данные можно получить на google.com/adsense/"
+    DATA:
+      CLIENT: "ID клиента для AdSense"
+      SLOT: "ID слот для AdSense"
 # English
 en:
   PLUGIN_ADSENSE:
