@@ -1,6 +1,6 @@
 <?php
 /**
- * AdSense v1.0.1
+ * AdSense v1.0.2
  *
  * This plugin enables to use AdSense inside a document
  * to be rendered by Grav.
@@ -9,7 +9,7 @@
  * http://cookie-soft.de/license
  *
  * @package     AdSense
- * @version     1.0.1
+ * @version     1.0.2
  * @link        <https://github.com/muuvmuuv/grav-plugin-adsense>
  * @author      Marvin Heilemann <marvin.heilemann@cookie-soft.de>
  * @copyright   2015, Marvin Heilemann
@@ -72,10 +72,13 @@ class AdSensePlugin extends Plugin {
   {
     /** @var Page $page */
     $page   = $event['page'];
+
     /** @var Twig $twig */
     $twig   = $this->grav['twig'];
+
     /** @var Data $config */
     $config = $this->mergeConfig($page, TRUE);
+
     /** @var Sandbox $sandy */
     $sandy  = $config->get('sandbox');
 
@@ -93,10 +96,14 @@ class AdSensePlugin extends Plugin {
     /** collect the modular config */
     $modular_type = $config->get('type');
     $modular_direction = $config->get('direction');
+    $modular_slot = $config->get('slot');
+
+    /** Check for module specific slot */
+    $modular_slot ? $slot = $modular_slot : $slot = $data['slot'];
 
     if ($config->get('enabled') && $config->get('active')) {
 
-      /** check if the sandbox is active */
+      /** check if sandbox is active */
       $sandy ?
         $twig->twig_vars['adsense_sandy'] = true :
         $twig->twig_vars['adsense_sandy'] = false ;
@@ -105,7 +112,7 @@ class AdSensePlugin extends Plugin {
       $twig->twig_vars['adsense_type']      = $modular_type ? $modular_type : $type;
       $twig->twig_vars['adsense_direction'] = $modular_direction ? $modular_direction : $direction;
       $twig->twig_vars['adsense_client']    = $data['client'];
-      $twig->twig_vars['adsense_slot']      = $data['slot'];
+      $twig->twig_vars['adsense_slot']      = $slot;
 
       /** redering the template and insert vars */
       $html = $twig->processTemplate('partials/adsense.html.twig', array(

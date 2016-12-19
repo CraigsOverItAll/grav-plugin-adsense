@@ -1,3 +1,10 @@
+# v1.0.2
+## 16/03/2016
+
+1. [](#new)
+  * Added optional modular slot id
+  * Fixed a bug with sandbox mode
+
 # v1.0.1
 ## 05/12/2015
 
