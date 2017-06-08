@@ -1,11 +1,6 @@
-/** ------------------------------------------- *
-  * 16.03.16 - AdSense
-  * ------------------------------------------- */
-
 #adsense {
   position: relative;
   display: block;
-  margin: 30px auto;
   z-index: 10;
 }
 

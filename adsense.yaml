@@ -15,5 +15,5 @@ adsense:
     resource: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" # AdSense script url
 
   data:
-    client: ""            # AdSense client
-    slot: ""              # AdSense slot
+    client: "ca-pub-1147018993230160"     # AdSense client
+    slot: 1160605533                      # AdSense slot

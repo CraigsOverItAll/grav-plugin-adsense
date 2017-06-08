@@ -3,5 +3,5 @@ $(window).load(function(){
     $('ins.adsbygoogle').each(function(){
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
-  }, 500);
+  }, 1400);
 });

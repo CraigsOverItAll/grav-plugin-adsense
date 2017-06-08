@@ -1,16 +1,15 @@
 <?php
 /**
- * AdSense v1.0.2
- *
  * This plugin enables to use AdSense inside a document
  * to be rendered by Grav.
  *
  * Licensed under the MIT Version 4 licenses, see LICENSE.
  * http://cookie-soft.de/license
  *
- * @package     AdSense
- * @version     1.0.2
- * @link        <https://github.com/muuvmuuv/grav-plugin-adsense>
+ * @version     1.1.0
+ *
+ * @see        <https://github.com/muuvmuuv/grav-plugin-adsense>
+ *
  * @author      Marvin Heilemann <marvin.heilemann@cookie-soft.de>
  * @copyright   2015, Marvin Heilemann
  * @license     <http://opensource.org/licenses/MIT>
@@ -25,38 +24,40 @@ use Grav\Common\Twig\Twig;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
- * AdSensePlugin
+ * AdSensePlugin.
  *
  * This plugin enables to use AdSense inside a document
  * to be rendered by Grav.
  */
-class AdSensePlugin extends Plugin {
-
+class AdSensePlugin extends Plugin
+{
   /**
    * Return a list of subscribed events.
    *
-   * @return array A list of events.
+   * @return array a list of events
    */
   public static function getSubscribedEvents()
   {
     return [
-      'onPluginsInitialized' => ['onPluginsInitialized', 0]
+      'onPluginsInitialized' => ['onPluginsInitialized', 0],
     ];
   }
 
   /**
-   * Initialize configuration
+   * Initialize configuration.
    */
   public function onPluginsInitialized()
   {
     if ($this->isAdmin()) {
       $this->active = false;
+
       return;
     }
 
     if ($this->config->get('plugins.adsense.enabled')) {
       $this->enable([
-        'onPageContentRaw'    => ['onPageContentRaw', 0],
+        'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
+        'onPageContentRaw' => ['onPageContentRaw', 0],
         'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
         'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
       ]);
@@ -64,85 +65,83 @@ class AdSensePlugin extends Plugin {
   }
 
   /**
+   * Initialize shortcode.
+   */
+  public function onShortcodeHandlers()
+  {
+    $this->grav['shortcode']->registerAllShortcodes(__DIR__.'/shortcodes');
+  }
+
+  /**
    * Add content after page content was read into the system.
    *
-   * @param  Event  $event An event object, when `onPageContentRaw` is fired.
+   * @param Event $event an event object, when `onPageContentRaw` is fired
    */
   public function onPageContentRaw(Event $event)
   {
     /** @var Page $page */
-    $page   = $event['page'];
+    $page = $event['page'];
 
     /** @var Twig $twig */
-    $twig   = $this->grav['twig'];
+    $twig = $this->grav['twig'];
 
     /** @var Data $config */
-    $config = $this->mergeConfig($page, TRUE);
+    $config = $this->mergeConfig($page, true);
 
-    /** @var Sandbox $sandy */
-    $sandy  = $config->get('sandbox');
+    $globals = $config->get('adsense');
 
-    /** collect the adsense data and options */
-    $data       = $this->config->get('plugins.adsense.adsense.data');
-    $options    = $this->config->get('plugins.adsense.adsense.options');
-    $type       = $options['type'];
-    $direction  = $options['direction'];
-    $resource   = $options['resource'];
+    /** Set variables for later */
+    $adsense_sandy = $config->get('sandbox');
+    $adsense_type = $config->get('type') ? $config->get('type') : $globals['options']['type'];
+    $adsense_direction = $config->get('direction') ? $config->get('direction') : $globals['options']['direction'];
+    $adsense_slot = $config->get('slot') ? $config->get('slot') : $globals['data']['slot'];
+    $adsense_client = $globals['data']['client'];
 
-    /** check options */
-    $this->checkType($type);
-    $this->checkDirection($direction);
-
-    /** collect the modular config */
-    $modular_type = $config->get('type');
-    $modular_direction = $config->get('direction');
-    $modular_slot = $config->get('slot');
-
-    /** Check for module specific slot */
-    $modular_slot ? $slot = $modular_slot : $slot = $data['slot'];
-
-    if ($config->get('enabled') && $config->get('active')) {
-
-      /** check if sandbox is active */
-      $sandy ?
-        $twig->twig_vars['adsense_sandy'] = true :
-        $twig->twig_vars['adsense_sandy'] = false ;
-
-      /** inserting configuration into twig_vars */
-      $twig->twig_vars['adsense_type']      = $modular_type ? $modular_type : $type;
-      $twig->twig_vars['adsense_direction'] = $modular_direction ? $modular_direction : $direction;
-      $twig->twig_vars['adsense_client']    = $data['client'];
-      $twig->twig_vars['adsense_slot']      = $slot;
-
-      /** redering the template and insert vars */
-      $html = $twig->processTemplate('partials/adsense.html.twig', array(
-          'adsense_sandy'     => $twig->twig_vars['adsense_sandy'],
-          'adsense_type'      => $twig->twig_vars['adsense_type'],
-          'adsense_direction' => $twig->twig_vars['adsense_direction'],
-          'adsense_client'    => $twig->twig_vars['adsense_client'],
-          'adsense_slot'      => $twig->twig_vars['adsense_slot']
-      ));
-
-      echo $html;
+    if ($config->get('enabled')) {
+      $adsense_active = $config->get('active') ? true : false;
+    } else {
+      $adsense_active = false;
     }
+
+    /* Set twig vars */
+    $twig->twig_vars['adsense_active'] = $adsense_active;
+    $twig->twig_vars['adsense_sandy'] = $adsense_sandy;
+    $twig->twig_vars['adsense_type'] = $adsense_type;
+    $twig->twig_vars['adsense_direction'] = $adsense_direction;
+    $twig->twig_vars['adsense_slot'] = $adsense_slot;
+    $twig->twig_vars['adsense_client'] = $adsense_client;
+
+    // TODO: Echo before or after content
+    // if ($adsense_active) {
+    //   /* redering the template and insert vars */
+    //   $html_template = $twig->processTemplate('partials/adsense.html.twig', array(
+    //       'adsense_sandy' => $twig->twig_vars['adsense_sandy'],
+    //       'adsense_type' => $twig->twig_vars['adsense_type'],
+    //       'adsense_direction' => $twig->twig_vars['adsense_direction'],
+    //       'adsense_client' => $twig->twig_vars['adsense_client'],
+    //       'adsense_slot' => $twig->twig_vars['adsense_slot'],
+    //   ));
+    //
+    //   echo $html_template;
+    // }
   }
 
   /**
-   * Add style and script to page
+   * Add style and script to page.
    */
   public function onTwigSiteVariables()
   {
-    $adsense    = $this->config->get('plugins.adsense');
-    $sandy      = $adsense['sandbox'];
-    $options    = $adsense['adsense']['options'];
-    $priority   = $options['priority'];
-    $pipeline   = $options['pipeline'];
-    $load       = $options['load'];
-    $resource   = $options['resource'];
+    $adsense = $this->config->get('plugins.adsense');
+    $sandy = $adsense['sandbox'];
+    $options = $adsense['adsense']['options'];
+    $priority = $options['priority'];
+    $pipeline = $options['pipeline'];
+    $load = $options['load'];
+    $resource = $options['resource'];
 
-    /** adding the style/script to the assets */
-    $sandy ? : $this->grav['assets']->addJs($resource, $priority, $pipeline, $load);
-    $sandy ? : $this->grav['assets']->addJs('plugin://adsense/assets/js/adsense.js', $priority, $pipeline, $load);
+    /* adding the style/script to the assets */
+    $sandy ?: $this->grav['assets']->addJs($resource, $priority, $pipeline, $load);
+    $sandy ?: $this->grav['assets']->addJs('plugin://adsense/assets/js/adsense.js', $priority, $pipeline, $load);
     $this->grav['assets']->addCss('plugin://adsense/assets/css/adsense.css', $priority, $pipeline);
   }
 
@@ -151,42 +150,42 @@ class AdSensePlugin extends Plugin {
    */
   public function onTwigTemplatePaths()
   {
-      $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+      $this->grav['twig']->twig_paths[] = __DIR__.'/templates';
   }
 
   /**
-   * Check the type
+   * Check the type.
    *
-   * @param  string $type of the adsense.
+   * @param string $type of the adsense
    */
   private function checkType($type)
   {
     if (empty($type)){
         throw new \InvalidArgumentException('The AdSense type variable value must be defined. At the moment it is empty. If you are overriding the default configuration, please define the type variable too with a valid value.');
     }
-    if (!preg_grep("/" . $type . "/i", array(
-        "banner",
-        "fixed",
+    if (!preg_grep('/'.$type.'/i', array(
+        'banner',
+        'fixed',
     ))){
         throw new \InvalidArgumentException(sprintf('The AdSense type variable value must be one of "banner" or "fixed". You gave "%s"', $type));
     }
   }
 
   /**
-   * Check the direction
+   * Check the direction.
    *
-   * @param  string $direction of the adsense.
+   * @param string $direction of the adsense
    */
   private function checkDirection($direction)
   {
     if (empty($direction)){
         throw new \InvalidArgumentException('The AdSense direction variable value must be defined. At the moment it is empty. If you are overriding the default configuration, please define the type variable too with a valid value.');
     }
-    if (!preg_grep("/" . $direction . "/i", array(
-        "left",
-        "top",
-        "bottom",
-        "right"
+    if (!preg_grep('/'.$direction.'/i', array(
+        'left',
+        'top',
+        'bottom',
+        'right',
     ))){
         throw new \InvalidArgumentException(sprintf('The AdSense direction variable value must be one direction like "left", "right", "top" or "bottom". You gave "%s"', $direction));
     }
